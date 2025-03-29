@@ -1,0 +1,47 @@
+import React from "react";
+import logo from "../assets/totoro.png";
+import { BsPlus, BsFillLightningFill, BsGearFill } from "react-icons/bs";
+import { FaFire, FaPoo } from "react-icons/fa";
+import { TbSmartHome } from "react-icons/tb";
+import { GrGallery } from "react-icons/gr";
+import { CgProfile } from "react-icons/cg";
+import { BsLightningChargeFill } from "react-icons/bs";
+
+const SideBar = () => {
+  return (
+    <div className="fixed top-0 left-0 h-screen w-20 flex flex-col bg-secondary dark:bg-gray-800 shadow-lg border-r-2 border-green z-2">
+      {/* <SideBarIcon icon={<FaFire size="28" />} place="mt-4" /> */}
+      <img src={logo} alt="Logo" />
+      <SideBarIcon icon={<TbSmartHome size="32" />} text="Home" />
+      <SideBarIcon icon={<GrGallery size="20" />} text="Generations" />
+      <Divider />
+      <div className="mt-auto mb-5 flex flex-col">
+        <SideBarIcon icon={<BsLightningChargeFill size="22" />} text="200 Credits" />
+        <SideBarIcon icon={<CgProfile size="22" />} text="cdrescher03@gmail.com" />
+      </div>
+    </div>
+  );
+};
+
+const SideBarIcon = ({ icon, text = "", selected, place = "" }) => {
+  return (
+    <div
+      className={`
+        group ${place} flex items-center justify-center 
+        h-12 w-12 mt-2 mb-2 mx-auto  
+        bg-tertiary hover:bg-grass 
+        text-icon hover:bg-[#65514c]
+        hover:rounded-xl rounded-3xl
+        transition-all duration-300 ease-linear
+        cursor-pointer shadow-lg
+    `}
+    >
+      {icon}
+      <span className="sidebar-tooltip group-hover:scale-100">{text}</span>
+    </div>
+  );
+};
+
+const Divider = () => <div className="h-20" />;
+
+export default SideBar;
